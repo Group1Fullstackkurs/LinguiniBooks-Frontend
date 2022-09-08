@@ -1,0 +1,55 @@
+.homepage-header {
+	display: flex;
+	gap: 4em;
+	align-items: center;
+	justify-content: space-evenly;
+	background-color: rgb(177, 97, 17);
+  }
+
+.homepage-header > h1{
+	color: white;
+}
+  
+  .searchbar {
+	width: 60em;
+	display: flex;
+	justify-content: center;
+	margin-top: 0.5em;
+  }
+  
+  .searchbar > select {
+	outline: none;
+	border: 3px solid lightgray;
+	border-right: 0px;
+  }
+  
+  .searchbar > input {
+	width: 100%;
+	height: 50px;
+	border: 3px solid lightgray;
+	outline: none;
+	text-align: center;
+  }
+  
+  .login-box, .cart-box{
+    opacity: 1;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: white;
+	padding: 0.5em;
+    padding-top: 1.3em;
+	border: 1px solid white;
+    border-radius: 10em;
+  }
+
+  .login-box:hover,.cart-box:hover{
+    opacity: 0.5;
+  }
+
+  .login-box > p, .cart-box > p{
+	padding: 2px;
+  }
+
+

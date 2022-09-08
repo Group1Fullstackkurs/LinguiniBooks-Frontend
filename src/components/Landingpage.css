@@ -4,14 +4,14 @@
 	flex-direction: column;
 }
 
-
-
-
 .bookbox {
+    display: block;
     text-align: center;
+    margin-top: 1em;
+
 }
 
-.bookbox .temp {
+.bookbox {
     position: relative;
     display: inline-block;
     margin: 30px auto;
