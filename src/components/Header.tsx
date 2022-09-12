@@ -7,7 +7,7 @@ function Header() {
 
     return (
             <div className="homepage-header">
-				<h1>LINGUINI BOOKS</h1> 
+				<h1>Linguini Books</h1> 
 				<div className="searchbar">
 					<select name="menu" id="menu">
 						<option value="selected">Category</option>
@@ -23,7 +23,7 @@ function Header() {
 				</div>
 				<div className='login-box'>
 					<FontAwesomeIcon icon={faUser} />
-					<p>Log In</p>
+					<p>Sign in</p>
 				</div>
 				<div className='cart-box'>
 					<FontAwesomeIcon icon={faCartShopping} />
