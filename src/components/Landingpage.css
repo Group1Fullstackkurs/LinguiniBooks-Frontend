@@ -1,50 +1,41 @@
 .LandingPage{
-	height: 100vh;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.LandingPage > h2{
+    margin-bottom: 0;
 }
 
 .bookbox {
     display: flex;
+    width: 90vw;
+    border: 1px solid black;
     flex-wrap: wrap;
-    gap: 0.5em;
     text-align: center;
+    justify-content: space-around;
     margin-top: 1em;
 }
 
-.bookbox {
-    /* position: relative;
-    display: inline-block; */
-    margin: 30px auto;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-
-    padding: 15px 25px;
-    color: #FFF;
-    font-size: 102px;
-    font-weight: 900;
-
-    /* text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
-    text-align: center;
-    box-shadow: 3px 6px rgba(0, 0, 0, 0.2) */
-}
-
-.bookbox  {
-    color: #FFF;
-    /* font-size: 48px;
-    font-weight: 700;
-    text-shadow: 3px 3px rgba(50, 50, 70, 0.5); */
-}
-
-.book-info{
-    width: 11em;
-    border: 1px black solid;
+.book-info {
+    margin: 2em;
+    background-color: rgb(226, 102, 102);
+    border: 1px solid black;
+    border-radius: 8px;
+    width: 12em;
     color: black;
-    font-size: 0.15em;
-    padding: 1em;
+    text-align: center;
+
 }
 
-.book-info > p {
+.book-box  {
+    color: black;
+}
+
+.book-info > p{
     margin: 0;
 }
 
