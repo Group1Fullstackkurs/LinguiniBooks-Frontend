@@ -7,12 +7,10 @@ import { plainToInstance } from "class-transformer";
 import axios from 'axios'
 
 function Landingpage() {
-    const [bookList, setBookList] = useState([])
+    const [bookList, setBookList] = useState(Array<BookModel>)
     
     useEffect(() =>{
-            fetchAllBooks().then(books =>
-            console.log(books[1].title)
-            
+        fetchAllBooks().then(books =>setBookList(books)
         )
     }, [])
     
@@ -23,8 +21,18 @@ function Landingpage() {
         <div className="LandingPage">
             
             <div className="bookbox">
-            
-            {/* {books.map(book => book.title)} */}
+                {bookList.map(book => 
+                    {return(
+                        <div className='book-info' key={book.id}>
+                            <p>Title: {book.title}</p>
+                            <p>Author: {book.firstName} {book.lastName}</p>
+                            <p>Publication Year: {book.publicationYear}</p>
+                            <p>Category: {book.category}</p>
+                            <p>Condition: {(book.new) ? 'New' : 'Used'}</p>
+                            <p>Seller: {book.seller}</p>
+                        </div>
+                    )})
+                }
             </div>
         </div>
     )

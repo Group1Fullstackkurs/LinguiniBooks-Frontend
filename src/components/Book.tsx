@@ -1,8 +1,16 @@
 import './Book.css'
+import { BookModel } from '../Typescript/BookModel'
 
 function Book(){
+	
+
 	return(
-		<div className="Books">Book</div>
+		<div className="book">
+			
+		
+		
+		
+		</div>
 	)
 }
 export default Book
