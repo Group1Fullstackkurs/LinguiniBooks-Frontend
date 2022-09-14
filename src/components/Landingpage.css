@@ -5,14 +5,16 @@
 }
 
 .bookbox {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
     text-align: center;
     margin-top: 1em;
 }
 
 .bookbox {
-    position: relative;
-    display: inline-block;
+    /* position: relative;
+    display: inline-block; */
     margin: 30px auto;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
@@ -22,14 +24,31 @@
     font-size: 102px;
     font-weight: 900;
 
-    text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+    /* text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
     text-align: center;
-    box-shadow: 3px 6px rgba(0, 0, 0, 0.2)
+    box-shadow: 3px 6px rgba(0, 0, 0, 0.2) */
 }
 
 .bookbox  {
     color: #FFF;
-    font-size: 48px;
+    /* font-size: 48px;
     font-weight: 700;
-    text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+    text-shadow: 3px 3px rgba(50, 50, 70, 0.5); */
+}
+
+.book-info{
+    width: 11em;
+    border: 1px black solid;
+    color: black;
+    font-size: 0.15em;
+    padding: 1em;
+}
+
+.book-info > p {
+    margin: 0;
+}
+
+.book-info:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 5px black;
 }
