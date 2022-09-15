@@ -14,32 +14,11 @@
     display: flex;
     width: 90vw;
     border: 1px solid black;
+    color: black;
     flex-wrap: wrap;
     text-align: center;
     justify-content: space-around;
     margin-top: 1em;
 }
 
-.book-info {
-    margin: 2em;
-    background-color: rgb(226, 102, 102);
-    border: 1px solid black;
-    border-radius: 8px;
-    width: 12em;
-    color: black;
-    text-align: center;
 
-}
-
-.book-box  {
-    color: black;
-}
-
-.book-info > p{
-    margin: 0;
-}
-
-.book-info:hover{
-    cursor: pointer;
-    box-shadow: 5px 5px 5px black;
-}

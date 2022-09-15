@@ -1,5 +1,4 @@
 import axios from 'axios'
-import AxiosResponse from 'axios'
 import { plainToInstance } from 'class-transformer'
 import { BookModel } from './BookModel'
 
