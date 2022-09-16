@@ -1,22 +1,44 @@
 .book {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    
+    background-color: #6961ab;
+    border: 0.1em solid black;
+    color: #ffffff;
+
     margin: 2em 0;
-    background-color: rgb(92, 56, 34);
-    border: 1px solid black;
-    border-radius: 8px;
     width: 12em;
     height: 18em;
-    color: #ffffff;
-    text-align: center;
-
 }
 
-.book > p{
-    margin: 0.5em;
-    font-style: italic;
+.book p{
+    margin: 0em;
     font-weight: 300;
 }
 
 .book:hover{
     cursor: pointer;
     box-shadow: 1px 1px 9px rgb(64, 64, 64);
+}
+/*
+    box-shadow with pixels 🗿🗿🗿🗿🗿🗿🗿🗿🗿 ojj det var Mikael
+*/
+
+.book-title{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: black;
+    box-shadow: 0 0 0 8px #6961ab,
+                0 0 0 10px #000;
+    border: 0.1em solid black;
+    margin-top: 4.5em;
+    width: 9em;
+    height: 4em;
+}
+
+.book-author{
+    margin-top: 6em;
 }
