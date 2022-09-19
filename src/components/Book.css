@@ -1,15 +1,39 @@
-.book {
+:root{
+    --gold: #D4AA22;
+    --orange: #cd5a13;
+    --book-condition: #a94b10;
+}
+
+.book-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+    margin: 1em 0;
+    padding: 1em;
+
+    width: 13em;
+    border: 1px solid #d1d1d1;
+    color: white;
+}
+
+.book-container p {
+    margin: 0;
+}
+
+.book{
     display:flex;
     flex-direction: column;
     align-items: center;
     
-    background-color: #6961ab;
-    border: 0.1em solid black;
-    color: #ffffff;
-
-    margin: 2em 0;
-    width: 12em;
-    height: 18em;
+    width: 80%;
+    background:url('https://images.unsplash.com/photo-1613901283258-fecaf19529db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80');
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: 0.2s;
+   
 }
 
 .book p{
@@ -18,12 +42,23 @@
 }
 
 .book:hover{
+    transform: scale(1.05);
     cursor: pointer;
-    box-shadow: 1px 1px 9px rgb(64, 64, 64);
 }
-/*
-    box-shadow with pixels 🗿🗿🗿🗿🗿🗿🗿🗿🗿 ojj det var Mikael
-*/
+
+.book-new-icon{
+    position: relative;
+    left: -5em;
+    top: 1em;
+    background: var(--book-condition);
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .book-title{
     display:flex;
@@ -31,14 +66,42 @@
     justify-content: center;
     
     background-color: black;
-    box-shadow: 0 0 0 8px #6961ab,
-                0 0 0 10px #000;
-    border: 0.1em solid black;
-    margin-top: 4.5em;
-    width: 9em;
+    box-shadow: 0 0 0 2px var(--gold),
+                0 0 0 5px #000;
+    margin-top: 1em;
+    width: 70%;
     height: 4em;
 }
 
 .book-author{
-    margin-top: 6em;
+    margin-top: 7em;
+    margin-bottom: 1em;
+    padding: 0 0.5em;
+    font-size: 0.7em;
+    background-color: #000;
+    box-shadow: 0 0 0 1px var(--gold),
+                0 0 0 2px #000;
+}
+
+.book-sale-info{
+    color: black;
+    margin-top: 1em;
+    padding-top: 0.5em;
+    border-top: 1px solid black;
+}
+
+.book-cart-btn{
+    background-color: var(--orange) ;
+    width: 5em;
+    color: white;
+    font-size: 0.8em;
+    transition: 0.3s;
+}
+
+.book-cart-btn:hover{
+	background-color: #dab7a0;
+}
+
+.book-cart-btn:active{
+	background-color: #c97d4d;
 }
