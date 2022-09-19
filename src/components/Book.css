@@ -1,13 +1,27 @@
+.book-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0;
+    margin: 1em;
+}
+
+.book-container p {
+    margin: 0;
+}
+
 .book {
     display:flex;
     flex-direction: column;
     align-items: center;
     
-    background-color: #6961ab;
+    background-color: #573dcb;
     border: 0.1em solid black;
     color: #ffffff;
+    transition: 0.2s;
 
-    margin: 2em 0;
+    margin: 2em 0 0.5em 0;
     width: 12em;
     height: 18em;
 }
@@ -17,13 +31,25 @@
     font-weight: 300;
 }
 
-.book:hover{
+.book:hover {
+    box-shadow: 0 0 0.6em #585757;
     cursor: pointer;
-    box-shadow: 1px 1px 9px rgb(64, 64, 64);
 }
-/*
-    box-shadow with pixels 🗿🗿🗿🗿🗿🗿🗿🗿🗿 ojj det var Mikael
-*/
+
+.book-new-icon{
+    position: absolute;
+    top: 2.4em;
+    left: -1.3em;
+    
+    background: #35343c;
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .book-title{
     display:flex;
@@ -31,7 +57,7 @@
     justify-content: center;
     
     background-color: black;
-    box-shadow: 0 0 0 8px #6961ab,
+    box-shadow: 0 0 0 8px #573dcb,
                 0 0 0 10px #000;
     border: 0.1em solid black;
     margin-top: 4.5em;
@@ -40,5 +66,19 @@
 }
 
 .book-author{
-    margin-top: 6em;
+    margin-top: 8em;
+    font-size: 0.8em;
+}
+
+.book-cart-btn{
+    display: block;
+    background-color: #35343c;
+    color: white;
+    font-size: 0.8em;
+    transition: 0.3s;
+}
+
+.book-cart-btn:hover{
+	background-color: #5c5b61;
+	color: white;
 }
