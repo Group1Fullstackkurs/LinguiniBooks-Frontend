@@ -2,9 +2,10 @@ import "./Book.css";
 import { BookModel } from "../Typescript/BookModel";
 
 function Book(book: BookModel) {
+ 
   return (
     <div className="book-container">
-      <div className="book">
+      <div className="book" >
         {(book.new) ? <div className="book-new-icon">
           New
         </div> : <div className="book-new-icon">
@@ -19,11 +20,15 @@ function Book(book: BookModel) {
       </div>
       <div className="book-sale-info">
         <p>{book.price}</p>
-        <a href="http://google.com" target="_blank">
-          <div className="book-cart-btn">
+        {/* <a href="" target="_blank"> */}
+          <div className="book-cart-btn"
+            onClick={(event: React.MouseEvent<HTMLElement>) => {
+              alert("Add to cart simulation")
+              }}
+              >
             Add to cart
           </div>
-        </a>
+        {/* </a> */}
       </div>
       
         {/* <p>Publication Year: {book.publicationYear}</p>

@@ -9,7 +9,8 @@ function Header() {
 
   return (
     <div className="homepage-header">
-      <h1>Linguini Books</h1>
+      <h1>Linguini </h1>
+      <h1>Books</h1>
       <div className="searchbar">
         <select
           name="menu"

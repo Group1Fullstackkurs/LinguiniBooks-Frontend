@@ -10,12 +10,10 @@
     margin-bottom: 0;
 }
 
-.bookbox {
+.bookbox{
     display: flex;
     width: 90vw;
     flex-wrap: wrap;
     text-align: center;
     justify-content: center;
 }
-
-
