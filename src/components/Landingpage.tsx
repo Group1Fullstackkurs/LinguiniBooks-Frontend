@@ -15,7 +15,7 @@ function Landingpage() {
   }, []);
 
   return (
-    <div className="LandingPage">
+    <div className="landing-page">
       <h2>Senaste böcker i nytt skick</h2>
       <div className="bookbox">
         {bookList

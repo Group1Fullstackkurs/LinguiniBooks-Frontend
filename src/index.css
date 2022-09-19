@@ -1,9 +1,13 @@
 :root {
   /*font-family: Inter, Avenir, Helvetica, Arial, sans-serif;*/
-  font-family: 'Cabin', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
+  font-family: 'Passion One', cursive;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
+
+  color: #000;
+  background-color: #fff ;
 
   /* color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);

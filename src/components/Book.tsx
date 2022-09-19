@@ -19,12 +19,13 @@ function Book(book: BookModel) {
       </div>
       <div className="book-sale-info">
         <p>{book.price}</p>
+        <a href="http://google.com" target="_blank">
+          <div className="book-cart-btn">
+            Add to cart
+          </div>
+        </a>
       </div>
-      <a href="http://google.com" target="_blank">
-        <div className="book-cart-btn">
-          Add to cart - ska länka till cart
-        </div>
-      </a>
+      
         {/* <p>Publication Year: {book.publicationYear}</p>
         <p>Category: {book.category}</p>
         <p>Condition: {book.new ? "New" : "Used"}</p>

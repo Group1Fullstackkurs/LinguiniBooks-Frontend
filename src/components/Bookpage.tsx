@@ -15,24 +15,26 @@ function Bookpage() {
   }, []);
 
   return (
-    <div className="book-search-box">
-      {bookList
-        .filter((book) => {
-          if (infoState.filter == "") {
-            return book;
-          } else if (
-            book.title.toLowerCase().includes(infoState.filter.toLowerCase())
-          ) {
-            return book;
-          }
-        })
-        .map((book) => {
-          return (
-            <div key={book.id} className="book-search">
-              <Book {...book} />
-            </div>
-          );
-        })}
+    <div className="book-page">
+      <div className="book-search-box">
+        {bookList
+          .filter((book) => {
+            if (infoState.filter == "") {
+              return book;
+            } else if (
+              book.title.toLowerCase().includes(infoState.filter.toLowerCase())
+            ) {
+              return book;
+            }
+          })
+          .map((book) => {
+            return (
+              <div key={book.id} className="book-search">
+                <Book {...book} />
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,14 @@
+.book-page{
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+}
+
+.book-search-box {
+    display: flex;
+    width: 90vw;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}

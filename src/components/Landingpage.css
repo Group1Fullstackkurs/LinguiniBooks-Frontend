@@ -1,4 +1,4 @@
-.LandingPage{
+.landing-page{
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -6,28 +6,16 @@
     align-items: center;
 }
 
-.LandingPage > h2{
+.landing-page > h2{
     margin-bottom: 0;
 }
 
 .bookbox {
     display: flex;
     width: 90vw;
-    border: 1px solid black;
-    color: black;
     flex-wrap: wrap;
     text-align: center;
-    justify-content: space-around;
-    margin-top: 1em;
-}
-
-.book-search-box{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.5em;
-    margin: 1em 2em;
+    justify-content: center;
 }
 
 
