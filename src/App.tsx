@@ -11,7 +11,7 @@ function App() {
     
       <div className="App">
           <Header/>
-          {(searchInfo.filter.length > 0) ? <Bookpage /> : <Landingpage/>}          
+          {(searchInfo.filter[0].length > 0) ? <Bookpage /> : <Landingpage/>}          
       </div>
   )
 }
