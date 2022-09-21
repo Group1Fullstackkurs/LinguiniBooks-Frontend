@@ -2,25 +2,36 @@ import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import searchInfoState from "../atoms/searchInfoState";
+import booksState from '../atoms/booksState'
 import { useRecoilState } from "recoil";
+import fetchAllBooks from "../Typescript/fetch";
+import { useState, useEffect } from "react";
+import { BookModel } from "../Typescript/BookModel";
+import { IBookModel } from "../Typescript/IBookModel";
 
 function Header() {
   const [infoState, setInfoState] = useRecoilState(searchInfoState);
+  const [books, setBooks] = useRecoilState(booksState);
+
+  useEffect(() => {
+    fetchAllBooks().then((books) => console.log(books));
+    fetchAllBooks().then((books) => setBooks(books));
+    //fetchAllBooks().then((booking) => setBooks(booking));
+  }, []);
 
   return (
     <div className="homepage-header">
-      <h1>Linguini </h1>
-      <h1>Books</h1>
+      <h1>Linguini Books</h1>
       <div className="searchbar">
         <select
           name="menu"
           id="menu"
-          onChange={(event) =>
-            setInfoState({
-              category: event.target.value,
-              filter: infoState.filter,
-            })
-          }
+          // onChange={(event) =>
+          //   setInfoState({
+          //     books: infoState.books,
+          //     filter: infoState.filter,
+          //   })
+          // }
         >
           <option value="Category">Category</option>
           <option value="Action">Action</option>
@@ -38,8 +49,7 @@ function Header() {
           placeholder="Search for a book, e.g Parry Hotter"
           onChange={(event) =>
             setInfoState({
-              category: infoState.category,
-              filter: event.target.value,
+              filter: {title: event.target.value, author:"",language:"", publicationYear:"", price:""},
             })
           }
         />
