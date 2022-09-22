@@ -1,29 +1,29 @@
 import "./Bookpage.css";
 import { BookModel } from "../Typescript/BookModel";
-import { useRecoilState, useRecoilValue } from "recoil";
-import searchInfoState from "../atoms/searchInfoState";
-import fetchAllBooks from "../Typescript/fetch";
 import { useState, useEffect } from "react";
+import { useRecoilState } from "recoil";
+import booksState from '../atoms/booksState'
+import searchInfoState from "../atoms/searchInfoState";
 import Book from "./Book";
 
 function Bookpage() {
   const [bookList, setBookList] = useState(Array<BookModel>);
   const [infoState, setInfoState] = useRecoilState(searchInfoState);
+  const [books, setBooks] = useRecoilState(booksState);
 
   useEffect(() => {
-    fetchAllBooks().then((books) => setBookList(books));
-    console.log(bookList);
-  }, []);
+    setBookList(bookList => bookList=[...books]);
+  }, [books]);
 
   return (
     <div className="book-page">
       <div className="book-search-box">
         {bookList
           .filter((book) => {
-            if (infoState.filter.title == "") {
+            if (infoState.title == "") {
               return book;
             } else if (
-              book.title.toLowerCase().includes(infoState.filter.title.toLowerCase())
+              book.title.toLowerCase().includes(infoState.title.toLowerCase())
             ) {
               return book;
             }

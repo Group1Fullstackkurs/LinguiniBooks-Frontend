@@ -6,11 +6,7 @@ function Book(book: BookModel) {
   return (
     <div className="book-container">
       <div className="book" >
-        {(book.new) ? <div className="book-new-icon">
-          New
-        </div> : <div className="book-new-icon">
-          Used
-        </div>}
+        {(book.new) ? <div className="book-new-icon"> New </div> : <div className="book-new-icon"> Used </div>}
         <div className="book-title">
           <p>{book.title}</p>
         </div>

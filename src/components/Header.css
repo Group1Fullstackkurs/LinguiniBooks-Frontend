@@ -5,8 +5,13 @@
   justify-content: space-between;
 }
 
-.homepage-header > h1 {
+.homepage-header h1 {
   font-family: "Kaushan Script", cursive;
+}
+
+.homepage-header a:link, .homepage-header a:visited{
+	text-decoration: none;
+	color: black;
 }
 
 .searchbar {

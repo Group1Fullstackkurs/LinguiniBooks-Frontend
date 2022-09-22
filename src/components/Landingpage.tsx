@@ -1,21 +1,25 @@
 import "./Landingpage.css";
-import { useState, useEffect } from "react";
-import { useRecoilValue } from "recoil";
-import searchInfoState from "../atoms/searchInfoState";
 import { BookModel } from "../Typescript/BookModel";
-import fetchAllBooks from "../Typescript/fetch";
+import { useState, useEffect } from "react";
+import { useRecoilValue, useRecoilState } from "recoil";
+import booksState from '../atoms/booksState'
+import searchInfoState from "../atoms/searchInfoState";
+import Bookpage from "./Bookpage";
 import Book from "./Book";
+
 
 function Landingpage() {
   const [bookList, setBookList] = useState(Array<BookModel>);
   const infoState = useRecoilValue(searchInfoState);
+  const [books, setBooks] = useRecoilState(booksState);
 
   useEffect(() => {
-    fetchAllBooks().then((books) => setBookList(books));
-  }, []);
+    setBookList(bookList => bookList=[...books]);
+  }, [books]);
 
   return (
-    <div className="landing-page">
+    <section>
+    ({infoState.title.length > 0 ? <Bookpage/> : <div className="landing-page">
       <h2>Senaste böcker i nytt skick</h2>
       <div className="bookbox">
         {bookList
@@ -65,7 +69,8 @@ function Landingpage() {
           })
           .slice(1, 6)}
       </div>
-    </div>
+    </div>})
+    </section>
   );
 }
 export default Landingpage;
