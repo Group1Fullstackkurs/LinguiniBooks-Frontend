@@ -8,23 +8,33 @@ function Profilepage() {
     <section>
       <div className="container">
         <div className="ProfilePage">
-          <h3>This is a nice profile page, good design.</h3>
+          <h3>This is a nice profile page, good design. Don't ever, and I mean EVER touch it, Julia.</h3>
           <div className="ProfileCard">
             <p>
-              Id: int Name: string Mail: string Hash: string Salt: string
-              IsBlockedSelling: bool IsBlockedAccount: bool IsAdmin: bool
-              IsSeller: bool IsActivatedAccount: bool IsActivatedSelling: bool
-              BoughtBooks: List
+              <li>Id: int</li>
+              <li>Name: string</li>
+              <li>Mail: string</li>
+              <li>Hash: string</li>
+              <li> Salt: string</li>
+              <li>IsBlockedSelling: bool</li>
+              <li>IsBlockedAccount: bool</li>
+              <li>IsAdmin: bool</li>
+              <li>IsSeller: bool </li>
+              <li>IsActivatedAccount: bool  </li>
+              <li>IsActivatedSelling: bool </li>
+              <li>BoughtBooks: List</li>
             </p>
-            <button
+
+          </div>
+
+        </div>
+                              <button className="EditUserButton"
               onClick={(event: React.MouseEvent<HTMLElement>) => {
                 alert("Edit user");
               }}
             >
               Edit user
             </button>
-          </div>
-        </div>
       </div>
     </section>
   );
