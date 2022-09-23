@@ -15,7 +15,7 @@ function Book(book: BookModel) {
         </div>
       </div>
       <div className="book-sale-info">
-        <p>{book.price}</p>
+        <p>{book.price} ({book.publicationYear})</p>
         {/* <a href="" target="_blank"> */}
           <div className="book-cart-btn"
             onClick={(event: React.MouseEvent<HTMLElement>) => {

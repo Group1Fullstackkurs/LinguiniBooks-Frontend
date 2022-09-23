@@ -1,6 +1,9 @@
-.homepage-header {
+.navbar{
   display: flex;
   padding: 1em 1em 2em;
+}
+.homepage-header {
+  display: flex;
   align-items: center;
   justify-content: space-between;
 }
@@ -28,6 +31,14 @@
   border-right: 0px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
+}
+
+.checkbox-container{
+  margin-left: 6em;
+}
+
+.checkbox-container > label{
+  margin: 0.5em;
 }
 
 .drpDown {

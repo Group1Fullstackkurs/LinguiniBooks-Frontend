@@ -2,7 +2,7 @@ import { atom } from "recoil"
 import { BookModel } from "../Typescript/BookModel"
 
 const filteredBooksState = atom<Array<BookModel>>({
-    key: 'filterdBooks',
+    key: 'filteredBooks',
 	default: [], 
 })
 export default filteredBooksState

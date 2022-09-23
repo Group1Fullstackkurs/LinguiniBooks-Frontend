@@ -9,10 +9,10 @@ import fetchAllBooks from "./Typescript/fetch";
 import filterdBooks from './atoms/filteredBooksState';
 import Profilepage from './components/Profilepage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import pureBookState from './atoms/pureBookState';
+import pureBooksState from './atoms/pureBooksState';
 
 function App() {
-  const [books, setBooks] = useRecoilState(pureBookState);
+  const [books, setBooks] = useRecoilState(pureBooksState);
 
   useEffect(() => {
     fetchAllBooks().then((bookList) => setBooks(bookList));

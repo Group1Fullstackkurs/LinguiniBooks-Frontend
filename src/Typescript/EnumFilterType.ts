@@ -3,3 +3,5 @@ export enum FilterType {
     author,
     year
 }
+
+export default FilterType

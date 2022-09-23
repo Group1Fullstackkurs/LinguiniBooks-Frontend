@@ -2,6 +2,6 @@ import { atom } from "recoil"
 
 const searchInfoState = atom({
     key: 'searchInfo',
-	default: {title: "", author: "", publicationYear: "", price: "", category: ""}
+	default: {searchKey: "", category: ""}
 })
 export default searchInfoState
