@@ -1,8 +1,8 @@
 import { atom } from "recoil"
 import { BookModel } from "../Typescript/BookModel"
 
-const booksState = atom<Array<BookModel>>({
-    key: 'bookList',
+const filterdBooksState = atom<Array<BookModel>>({
+    key: 'filterdBooks',
 	default: [], 
 })
-export default booksState
+export default filterdBooksState

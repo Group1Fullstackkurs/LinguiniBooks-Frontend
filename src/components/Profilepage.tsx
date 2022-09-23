@@ -1,7 +1,10 @@
 import "./Profilepage.css";
 import { useState, useEffect } from "react";
+import EditProfile from "./EditProfile";
 
 function Profilepage() {
+
+  const [openEditProfile, setopenEditProfile] = useState(false)  
  
 
   return (
@@ -28,13 +31,8 @@ function Profilepage() {
           </div>
 
         </div>
-                              <button className="EditUserButton"
-              onClick={(event: React.MouseEvent<HTMLElement>) => {
-                alert("Edit user");
-              }}
-            >
-              Edit user
-            </button>
+          <button className="EditUserButton" onClick={() => setopenEditProfile(true)}>Edit user</button>
+        <EditProfile open={openEditProfile} onClose={() => setopenEditProfile(false)}/>
       </div>
     </section>
   );

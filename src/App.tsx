@@ -6,13 +6,13 @@ import {useRecoilValue, useRecoilState} from 'recoil';
 import searchInfoState from "./atoms/searchInfoState";
 import { useState, useEffect } from "react";
 import fetchAllBooks from "./Typescript/fetch";
-import booksState from './atoms/booksState';
+import filterdBooks from './atoms/filteredBooksState';
 import Profilepage from './components/Profilepage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import pureBookState from './atoms/pureBookState';
 
 function App() {
-  const searchInfo = useRecoilValue(searchInfoState)
-  const [books, setBooks] = useRecoilState(booksState);
+  const [books, setBooks] = useRecoilState(pureBookState);
 
   useEffect(() => {
     fetchAllBooks().then((bookList) => setBooks(bookList));
