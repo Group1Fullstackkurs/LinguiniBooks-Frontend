@@ -1,9 +1,6 @@
 interface IInfoState {
-    title: string;
-    author: string;
-    publicationYear: string;
-    price: string;
-    category: string;
+    searchKey: string,
+    category: string
 }
 
 export default IInfoState;

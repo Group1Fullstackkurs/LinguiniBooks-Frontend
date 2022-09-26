@@ -1,12 +1,46 @@
 import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { useRecoilState } from "recoil";
-import searchInfoState from "../atoms/searchInfoState";
 import { Link } from "react-router-dom";
+import { FilterType } from "../Typescript/EnumFilterType";
+import { useState, useEffect } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import searchInfoState from "../atoms/searchInfoState";
+import filteredBooksState from "../atoms/filteredBooksState";
+import pureBooksState from "../atoms/pureBooksState";
+import checkboxState from "../atoms/checkboxState";
+import filter from "../Typescript/Filter";
 
 function Header() {
   const [infoState, setInfoState] = useRecoilState(searchInfoState);
+  const [isChecked, setIsChecked] = useRecoilState(checkboxState);
+  const [checkboxIsDisabled, setCheckboxIsDisabled] = useState({
+    az: false,
+    author: false,
+    year: false,
+  });
+  const [filteredBooks, setFilteredBooks] = useRecoilState(filteredBooksState);
+  const pureBooks = useRecoilValue(pureBooksState);
+
+  useEffect(() => {
+    if (infoState.category === "Category" || infoState.category === "") {
+      setCheckboxIsDisabled({ az: true, author: true, year: true });
+    } else {
+      setCheckboxIsDisabled({ az: false, author: false, year: false });
+    }
+  }, [infoState.category]);
+
+  useEffect(() => {
+    const updateFilter = async () => {
+      await filter(
+        FilterType.searchKey, //måste göra ngn switch grejsimojsimoj
+        setFilteredBooks,
+        pureBooks,
+        infoState
+      );
+    };
+    updateFilter();
+      }, [infoState.searchKey]);
 
   return (
     <div className="navbar">
@@ -48,24 +82,48 @@ function Header() {
           <div className="checkbox-container">
             <label>
               <input
+                onChange={(event) =>
+                  setIsChecked({
+                    az: event.target.checked,
+                    author: false,
+                    year: false,
+                  })
+                }
                 type="checkbox"
-                // onChange={handleChange}
+                checked={isChecked.az}
+                disabled={checkboxIsDisabled.az}
               />
-              a-z
+              A-Z
             </label>
             <label>
               <input
+                onChange={(event) =>
+                  setIsChecked({
+                    az: false,
+                    author: event.target.checked,
+                    year: false,
+                  })
+                }
                 type="checkbox"
-                // onChange={handleChange}
+                checked={isChecked.author}
+                disabled={checkboxIsDisabled.author}
               />
-              author
+              Author
             </label>
             <label>
               <input
+                onChange={(event) =>
+                  setIsChecked({
+                    az: false,
+                    author: false,
+                    year: event.target.checked,
+                  })
+                }
                 type="checkbox"
-                // onChange={handleChange}
+                checked={isChecked.year}
+                disabled={checkboxIsDisabled.year}
               />
-              publication year
+              Publication Year
             </label>
           </div>
         </div>

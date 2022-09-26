@@ -9,6 +9,7 @@ import Bookpage from "./Bookpage";
 import Book from "./Book";
 import filter from "../Typescript/Filter";
 import { FilterType } from "../Typescript/EnumFilterType";
+import checkboxState from "../atoms/checkboxState";
 
 
 function Landingpage() {
@@ -16,6 +17,7 @@ function Landingpage() {
   const infoState = useRecoilValue(searchInfoState);
   const [filteredBooks, setFilteredBooks] = useRecoilState(filteredBooksState);
   const pureBooks = useRecoilValue(pureBooksState);
+  const [isChecked, setIsChecked] = useRecoilState(checkboxState)
   
   useEffect(() => {
     const updateFilter = async () => {
@@ -79,7 +81,7 @@ function Landingpage() {
 
   return (
     <section>
-    {infoState.searchKey.length > 0 ? <Bookpage/> : <ShowThreeLinesOfBooks/>}
+    {infoState.searchKey.length > 0 || isChecked.az === true || isChecked.author === true || isChecked.year === true ?  <Bookpage/> : <ShowThreeLinesOfBooks/>}
     </section>
   );
 }

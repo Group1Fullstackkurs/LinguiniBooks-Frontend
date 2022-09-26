@@ -14,24 +14,13 @@ function Bookpage() {
   const [infoState, setInfoState] = useRecoilState(searchInfoState);
   const [filteredBooks, setFilteredBooks] = useRecoilState(filteredBooksState);
   const pureBooks = useRecoilValue(pureBooksState);
-  
-  useEffect(() => {
-    setBookList(bookList => bookList=[...filteredBooks]);
-  }, [pureBooks]);
+
+  useEffect(() => {}, [filteredBooks]);
 
   return (
     <div className="book-page">
       <div className="book-search-box">
-        {bookList
-          .filter((book) => {
-            if (infoState.searchKey == "") {
-              return book;
-            } else if (
-              book.title.toLowerCase().includes(infoState.searchKey.toLowerCase())
-            ) {
-              return book;
-            }
-          })
+        {filteredBooks
           .map((book) => {
             return (
               <div key={book.id} className="book-search">

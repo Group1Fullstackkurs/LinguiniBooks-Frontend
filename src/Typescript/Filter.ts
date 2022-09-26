@@ -27,6 +27,7 @@ const filter = async (
         })
       );
       break;
+
     case FilterType.author:
       setFilteredBooks(
         filteredBooks.sort((a, b) => {
@@ -40,14 +41,32 @@ const filter = async (
         })
       );
       break;
+
     case FilterType.year:
       setFilteredBooks(
         filteredBooks.sort((a, b) => b.publicationYear - a.publicationYear)
       );
       break;
-    default:
-      console.log("ERROR ID:10T");
+
+    case FilterType.searchKey:
+      if (infoState === null) {
+        throw new Error("ID:10T - infoState is null");
+      }
+      setFilteredBooks(
+        filteredBooks.filter((book) => {
+          if (infoState.searchKey == "") {
+            return book;
+          } else if (
+            book.title.toLowerCase().includes(infoState.searchKey.toLowerCase())
+          ) {
+            return book;
+          }
+        })
+      );
       break;
+
+    default:
+      throw new Error("ID:10T - Filter.ts");
   }
 };
 export default filter;

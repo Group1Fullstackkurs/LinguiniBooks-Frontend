@@ -1,7 +1,8 @@
 export enum FilterType {
     az,
     author,
-    year
+    year,
+    searchKey
 }
 
 export default FilterType
