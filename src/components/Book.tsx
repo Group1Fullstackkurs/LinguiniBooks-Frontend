@@ -1,5 +1,5 @@
-import "./Book.css";
 import { BookModel } from "../Typescript/BookModel";
+import "./Book.css";
 
 function Book(book: BookModel) {
  
@@ -24,6 +24,7 @@ function Book(book: BookModel) {
               >
             Add to cart
           </div>
+          {book.category}
         {/* </a> */}
       </div>
       

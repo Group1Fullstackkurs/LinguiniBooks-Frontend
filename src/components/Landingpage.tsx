@@ -1,42 +1,35 @@
-import "./Landingpage.css";
-import { BookModel } from "../Typescript/BookModel";
 import { useState, useEffect } from "react";
-import { useRecoilValue, useRecoilState } from "recoil";
-import filteredBooksState from '../atoms/filteredBooksState'
+import { useRecoilValue } from "recoil";
+import checkboxState from "../atoms/checkboxState";
 import pureBooksState from "../atoms/pureBooksState";
 import searchInfoState from "../atoms/searchInfoState";
+import { BookModel } from "../Typescript/BookModel";
 import Bookpage from "./Bookpage";
 import Book from "./Book";
-import filter from "../Typescript/Filter";
-import { FilterType } from "../Typescript/EnumFilterType";
-import checkboxState from "../atoms/checkboxState";
+import "./Landingpage.css";
 
 
 function Landingpage() {
   const [bookList, setBookList] = useState(Array<BookModel>);
   const infoState = useRecoilValue(searchInfoState);
-  const [filteredBooks, setFilteredBooks] = useRecoilState(filteredBooksState);
   const pureBooks = useRecoilValue(pureBooksState);
-  const [isChecked, setIsChecked] = useRecoilState(checkboxState)
+  const isChecked= useRecoilValue(checkboxState)
   
   useEffect(() => {
-    const updateFilter = async () => {
-      await filter(FilterType.year, setFilteredBooks, pureBooks)
-    }
-    updateFilter();
-    setBookList(bookList => bookList=[...filteredBooks]);
+    setBookList(bookList => bookList=[...pureBooks]);
   }, [pureBooks]);
  
   const ShowThreeLinesOfBooks = () =>{
     return(<div className="landing-page">
     <h2>Senaste böcker i nytt skick</h2>
     <div className="bookbox">
-    {filteredBooks
+    {bookList
         .filter((book) => {
           if (book.new == true) {
             return book;
           }
         })
+        .sort((a, b) => b.publicationYear - a.publicationYear)
         .map((book) => {
           return (
             <div key={book.id} className="book-info">
@@ -44,16 +37,17 @@ function Landingpage() {
             </div>
           );
         })
-        .slice(1, 6)}
+        .slice(0, 5)}
     </div>
     <h2>Senaste böcker i begagnat skick</h2>
     <div className="bookbox">
-      {filteredBooks
+      {bookList
         .filter((book) => {
           if (book.new == false) {
             return book;
           }
         })
+        .sort((a, b) => b.publicationYear - a.publicationYear)
         .map((book) => {
           return (
             <div key={book.id} className="book-info">
@@ -61,7 +55,7 @@ function Landingpage() {
             </div>
           );
         })
-        .slice(1, 6)}
+        .slice(0, 5)}
     </div>
     <h2>Senaste böcker i nytt eller begagnat skick</h2>
     <div className="bookbox">
@@ -74,7 +68,7 @@ function Landingpage() {
             </div>
           );
         })
-        .slice(1, 6)}
+        .slice(0, 5)}
     </div>
   </div>)
   }

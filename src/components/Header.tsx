@@ -1,15 +1,15 @@
-import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import { FilterType } from "../Typescript/EnumFilterType";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import searchInfoState from "../atoms/searchInfoState";
+import checkboxState from "../atoms/checkboxState";
 import filteredBooksState from "../atoms/filteredBooksState";
 import pureBooksState from "../atoms/pureBooksState";
-import checkboxState from "../atoms/checkboxState";
+import searchInfoState from "../atoms/searchInfoState";
+import { FilterType } from "../Typescript/EnumFilterType";
 import filter from "../Typescript/Filter";
+import "./Header.css";
 
 function Header() {
   const [infoState, setInfoState] = useRecoilState(searchInfoState);
@@ -22,6 +22,7 @@ function Header() {
   const [filteredBooks, setFilteredBooks] = useRecoilState(filteredBooksState);
   const pureBooks = useRecoilValue(pureBooksState);
 
+  // disable checkbox if no category is selected
   useEffect(() => {
     if (infoState.category === "Category" || infoState.category === "") {
       setCheckboxIsDisabled({ az: true, author: true, year: true });
@@ -30,17 +31,20 @@ function Header() {
     }
   }, [infoState.category]);
 
+  // filter books according to search input, category and checkbox
   useEffect(() => {
     const updateFilter = async () => {
-      await filter(
-        FilterType.searchKey, //måste göra ngn switch grejsimojsimoj
-        setFilteredBooks,
-        pureBooks,
-        infoState
-      );
+      await filter(handleFilterType(), setFilteredBooks, pureBooks, infoState);
     };
     updateFilter();
-      }, [infoState.searchKey]);
+  }, [infoState.searchKey, isChecked]);
+
+  const handleFilterType = () => {
+    if (isChecked.az === true && isChecked.author === false && isChecked.year === false) return FilterType.az; 
+    else if (isChecked.author === true && isChecked.az === false && isChecked.year === false) return FilterType.author;
+    else if (isChecked.year === true && isChecked.az === false && isChecked.author === false) return FilterType.year;
+    else return FilterType.searchKey;
+  };
 
   return (
     <div className="navbar">

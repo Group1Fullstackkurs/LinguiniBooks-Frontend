@@ -1,4 +1,4 @@
-export interface IBookModel {
+interface IBookModel {
     id: string
     firstName: string
     lastName: string
@@ -11,3 +11,4 @@ export interface IBookModel {
     stock: number 
     new: boolean
 }
+export default IBookModel;

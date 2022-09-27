@@ -16,7 +16,7 @@ const filter = async (
   switch (filterType) {
     case FilterType.az:
       setFilteredBooks(
-        filteredBooks.sort((a, b) => {
+        filteredBooks.filter(books => books.category === infoState?.category).sort((a, b) => {
           if (a.title < b.title) {
             return -1;
           }
@@ -30,7 +30,7 @@ const filter = async (
 
     case FilterType.author:
       setFilteredBooks(
-        filteredBooks.sort((a, b) => {
+        filteredBooks.filter(books => books.category === infoState?.category).sort((a, b) => {
           if (a.firstName < b.firstName) {
             return -1;
           }
@@ -44,7 +44,7 @@ const filter = async (
 
     case FilterType.year:
       setFilteredBooks(
-        filteredBooks.sort((a, b) => b.publicationYear - a.publicationYear)
+        filteredBooks.filter(books => books.category === infoState?.category).sort((a, b) => b.publicationYear - a.publicationYear)
       );
       break;
 

@@ -1,6 +1,6 @@
-import { IBookModel } from "./IBookModel";
+import IBookModel from "./IBookModel";
 
-export interface IUserModel {
+interface IUserModel {
   Id: string;
   Name: string;
   Mail: string;
@@ -14,3 +14,4 @@ export interface IUserModel {
   IsActivatedSelling: boolean;
   BoughtBooks: Array<IBookModel>;
 }
+export default IUserModel;
