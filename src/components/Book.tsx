@@ -1,16 +1,34 @@
-import "./Book.css";
+import { useState } from "react";
 import { BookModel } from "../Typescript/BookModel";
+import "./Book.css";
 
+// how each book will be displayed
 function Book(book: BookModel) {
+  const [isShowInfo, setIsShowInfo] = useState(false);
  
+  const ShowInfo = () =>{
+    return isShowInfo ? (
+      <div className="book-info" onClick={(event: React.MouseEvent<HTMLElement>) => handleClick()} >
+        <h2>{book.title}</h2>
+        <h3>by {book.firstName} {book.lastName}</h3>
+        <p>Publication Year: {book.publicationYear}</p>
+        <p>Category: {book.category}</p>
+        <p>Condition: {book.new ? "New" : "Used"}</p>
+        <p>Seller: {book.seller}</p>
+      </div>
+    ) : null; 
+  }
+
+  const handleClick = () => {
+    setIsShowInfo(!isShowInfo);
+  }
+
+
   return (
     <div className="book-container">
-      <div className="book" >
-        {(book.new) ? <div className="book-new-icon">
-          New
-        </div> : <div className="book-new-icon">
-          Used
-        </div>}
+      < ShowInfo />
+      <div className="book" onClick={(event: React.MouseEvent<HTMLElement>) => handleClick()}>
+        {(book.new) ? <div className="book-new-icon"> New </div> : <div className="book-new-icon"> Used </div>}
         <div className="book-title">
           <p>{book.title}</p>
         </div>
@@ -19,7 +37,7 @@ function Book(book: BookModel) {
         </div>
       </div>
       <div className="book-sale-info">
-        <p>{book.price}</p>
+        <p>{book.price} ({book.publicationYear})</p>
         {/* <a href="" target="_blank"> */}
           <div className="book-cart-btn"
             onClick={(event: React.MouseEvent<HTMLElement>) => {
@@ -31,10 +49,7 @@ function Book(book: BookModel) {
         {/* </a> */}
       </div>
       
-        {/* <p>Publication Year: {book.publicationYear}</p>
-        <p>Category: {book.category}</p>
-        <p>Condition: {book.new ? "New" : "Used"}</p>
-        <p>Seller: {book.seller}</p> */}
+        
     </div>
   );
 }

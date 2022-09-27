@@ -1,18 +1,32 @@
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useRecoilState } from 'recoil';
+import pureBooksState from './atoms/pureBooksState';
+import fetchAllBooks from "./Typescript/fetch";
 import Header from './components/Header'
-import Bookpage from './components/Bookpage';
 import Landingpage from './components/Landingpage'
-import {useRecoilValue} from 'recoil';
-import searchInfoState from "./atoms/searchInfoState";
+import Profilepage from './components/Profilepage';
+import './App.css'
+
 
 function App() {
-  const searchInfo = useRecoilValue(searchInfoState)
+  const [books, setBooks] = useRecoilState(pureBooksState);
+
+  useEffect(() => {
+    fetchAllBooks().then((bookList) => setBooks(bookList));
+  }, []);
+
   return (
-    
+    <Router>
       <div className="App">
-          <Header/>
-          {(searchInfo.filter.length > 0) ? <Bookpage /> : <Landingpage/>}          
+        <Header />
+        <Routes>
+          <Route path="/" element={<Landingpage />} />
+          <Route path="/ProfilePage" element={<Profilepage />} />
+          <Route path="/*" element={<Landingpage />} />
+        </Routes> 
       </div>
-  )
+    </Router>
+  );
 }
 export default App
