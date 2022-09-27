@@ -3,7 +3,13 @@
 	display: flex;
 	flex-direction: column;
     align-items: center;
+
 }
+
+.book-page > h2{
+    margin-bottom: 0;
+}
+
 
 .book-search-box {
     display: flex;
@@ -12,3 +18,4 @@
     text-align: center;
     justify-content: center;
 }
+

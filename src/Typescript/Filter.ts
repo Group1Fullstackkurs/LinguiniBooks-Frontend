@@ -1,7 +1,4 @@
 import { FilterType } from "./EnumFilterType";
-import filteredBooksState from "../atoms/filteredBooksState";
-import pureBookState from "../atoms/pureBooksState";
-import { useRecoilState } from "recoil";
 import { SetterOrUpdater } from "recoil";
 import { BookModel } from "./BookModel";
 import IInfoState from "./IInfoState";

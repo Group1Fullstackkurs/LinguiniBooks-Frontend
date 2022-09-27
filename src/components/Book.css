@@ -104,8 +104,45 @@
 
 .book-cart-btn:hover{
 	background-color: #dab7a0;
+    cursor: pointer;
 }
 
 .book-cart-btn:active{
 	background-color: #c97d4d;
+}
+
+.book-info{
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 12em;
+    height: 14em;
+    background-color: #000000;
+    border: 0.6em solid var(--gold);
+    padding: 1em;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+}
+
+.book-info > h2{
+    margin: 0;
+    font-size: 1.4em;
+}
+
+.book-info > h3{
+    margin: 0;
+    font-size: 1em;
+}
+
+.book-info > p:nth-of-type(1){
+    margin-top: 2em;
+}
+
+.book-info > p{
+    margin: 0em;
+    font-size: 0.9em;
+}
+
+.book-info:hover{
+    cursor: pointer;
 }
