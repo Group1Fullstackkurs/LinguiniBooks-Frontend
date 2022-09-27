@@ -5,9 +5,13 @@ import EditProfile from "./EditProfile";
 function Profilepage() {
 
   const [openEditProfile, setopenEditProfile] = useState(false)
-  const [userName, setUserName] = useState("")
-  const [password, setPassword] = useState("")
- 
+  const [usernameInput, setUsernameInput] = useState("")
+  const [passwordInput, setPasswordInput] = useState("")
+
+  const handleChangeUsername = event => {setUsernameInput(event.target.value)}
+  const handleChangePassword = event => {setPasswordInput(event.target.value) }
+  
+  console.log(usernameInput)
 
   return (
     <section>
@@ -22,9 +26,9 @@ function Profilepage() {
               <form>
                 <label>
                   Username:
-                  <input type="text"/>
+                  <input type="text" id="username" name="username" onChange={handleChangeUsername} value={usernameInput} />
                   Password:
-                  <input type="text" password="password" />
+                  <input type="text" id="password" name="password" onChange={handleChangePassword} value={passwordInput} />
                 </label>
                 <input type="submit" value="Submit" />
               </form>
@@ -41,13 +45,13 @@ function Profilepage() {
               <li>IsActivatedAccount: bool </li>
               <li>IsActivatedSelling: bool </li>
               <li>BoughtBooks: List</li> */}
+              
             </p>
           </div>
         </div>
-        <button
-          className="EditUserButton"
-          onClick={() => setopenEditProfile(true)}
-        >
+        
+        <button className="EditUserButton"
+          onClick={() => setopenEditProfile(true)}>
           Edit user
         </button>
         <EditProfile
@@ -56,6 +60,6 @@ function Profilepage() {
         />
       </div>
     </section>
-  );
+  )
 }
 export default Profilepage;
