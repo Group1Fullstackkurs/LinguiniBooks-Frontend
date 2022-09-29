@@ -18,21 +18,22 @@ const Loginform = () => {
   const handleChangePassword = event => {
     setPasswordInput(event.target.value)
   }
-
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
+    event.preventDefault() // to prevent submit to re-render the page as default
     setIsLoggingIn(true)
   }
-  console.log(usernameInput)
-
+  
   useEffect(() => {
-    fetchLoginUser(usernameInput, passwordInput).then(user =>
-      console.log("fetching:", user)
-    )
-    fetchLoginUser(usernameInput, passwordInput).then(user => setUserAtom(user))
-    console.log("Logging in...")
-    console.log("userState: ", userState)
-    userState === null ? setIsLoggedIn(false) : setIsLoggedIn(true)
-    console.log("isLoggedIn: ", isLoggedIn)
+    
+    const getUser = async () => {
+      await fetchLoginUser(usernameInput, passwordInput).then(user => console.log("Fetching user: ", user))
+      await fetchLoginUser(usernameInput, passwordInput).then(user => setUserAtom(user))
+    }
+    if(isLoggingIn){
+      getUser()
+    }
+    userAtom.id === null ? setIsLoggedIn(false) : setIsLoggedIn(true)
+
   }, [isLoggingIn])
 
   return (
@@ -57,6 +58,8 @@ const Loginform = () => {
       </label>
 
       <input type='submit' value='Submit' onClick={handleSubmit} />
+      <p>user: {userAtom.name}</p>
+      {userAtom.id}
     </form>
   )
 }
