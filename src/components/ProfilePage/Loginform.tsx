@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil"
 import userState from "../../atoms/userState"
 import fetchLoginUser from "../../Typescript/FetchLoginUser"
 import isLoggedInState from "../../atoms/isLoggedInState"
+import { faBatteryEmpty } from "@fortawesome/free-solid-svg-icons"
 
 const Loginform = () => {
   const [userAtom, setUserAtom] = useRecoilState(userState)
@@ -18,22 +19,26 @@ const Loginform = () => {
   const handleChangePassword = event => {
     setPasswordInput(event.target.value)
   }
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault() // to prevent submit to re-render the page as default
     setIsLoggingIn(true)
   }
-  
+  console.log("test2" + isLoggingIn)
   useEffect(() => {
-    
     const getUser = async () => {
-      await fetchLoginUser(usernameInput, passwordInput).then(user => console.log("Fetching user: ", user))
-      await fetchLoginUser(usernameInput, passwordInput).then(user => setUserAtom(user))
+      await fetchLoginUser(usernameInput, passwordInput).then(user =>
+        console.log("Fetching user: ", user)
+      )
+      await fetchLoginUser(usernameInput, passwordInput).then(user =>
+        setUserAtom(user)
+      )
     }
-    if(isLoggingIn){
+    console.log(isLoggingIn)
+    if (isLoggingIn) {
       getUser()
+      console.log("1234123123123" + userAtom.id)
     }
-    userAtom.id === null ? setIsLoggedIn(false) : setIsLoggedIn(true)
-
+    userAtom.id === undefined ? setIsLoggedIn(false) : setIsLoggedIn(true)
   }, [isLoggingIn])
 
   return (
@@ -56,10 +61,7 @@ const Loginform = () => {
           value={passwordInput}
         />
       </label>
-
       <input type='submit' value='Submit' onClick={handleSubmit} />
-      <p>user: {userAtom.name}</p>
-      {userAtom.id}
     </form>
   )
 }
