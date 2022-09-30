@@ -1,7 +1,7 @@
 
 import "./App.css"
 import Header from "./components/Header"
-import Bookpage from "./components/Bookpage"
+import Bookpage from "./components/BookPage/Bookpage"
 import Landingpage from "./components/Landingpage"
 import { useRecoilValue, useRecoilState } from "recoil"
 import searchInfoState from "./atoms/searchInfoState"

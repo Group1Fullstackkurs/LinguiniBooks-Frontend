@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { BookModel } from "../Typescript/BookModel";
-import "./Book.css";
+import { BookModel } from "../../Typescript/BookModel";
+import "../CSS/Book.css";
 
 // how each book will be displayed
 function Book(book: BookModel) {

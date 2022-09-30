@@ -1,4 +1,4 @@
-import { IBookModel } from "./IBookModel";
+import IBookModel from "./IBookModel";
 
 export class UserModel {
   id: string = "";

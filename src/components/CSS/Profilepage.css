@@ -1,8 +1,10 @@
-.Profileapage{
+.profile-page {
     font-size: large;
     background-color: black;
+    z-index: -1;
 }
-.ProfileCard {
+
+.profile-card {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
@@ -10,11 +12,12 @@
     background-color: rgba(214, 214, 214, 0.925);
     border: 0.1em solid black;
     border-radius: 2em;
-    
+    z-index: -1;
+
 }
 
 /* On mouse-over, add a deeper shadow */
-.ProfileCard:hover {
+.profile-card:hover {
     box-shadow: 0 5px 20px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -24,11 +27,5 @@
     background-color: white;
     margin: 5em;
 }
-.EditUserButton{
-    background-image: radial-gradient(white, rgb(116, 112, 112));
-    color: black;
-    border-color: black;
-    border: 0.5em;
-    margin-top: 1em;
 
-}
+

@@ -1,35 +1,24 @@
 import { useState } from "react"
-import Loginform from "./Loginform"
-import { useRecoilState } from "recoil"
+import { useRecoilValue } from "recoil"
 import userState from "../../atoms/userState"
+import EditProfile from "./EditProfile"
+import "../CSS/Profile.css"
 
 const Profile = () => {
-  const [openEditProfile, setopenEditProfile] = useState(false)
-  const [userAtom, setUserAtom] = useRecoilState(userState)
+  const user = useRecoilValue(userState)
+  const [isEditing, setIsEditing] = useState(false)
+  
   return (
     <div>
-      Profile
-      <p>Id: {userAtom.id}</p>
-      <p>Name: {userAtom.name}</p>
-      <p>Mail: {userAtom.mail}</p>
-      <p>BoughtBooks: {userAtom.boughtBooks}</p>
-      <li>Id: int</li>
-      <li>Name: string</li>
-      <li>Mail: string</li>
-      <li>Hash: string</li>
-      <li> Salt: string</li>
-      <li>IsBlockedSelling: bool</li>
-      <li>IsBlockedAccount: bool</li>
-      <li>IsAdmin: bool</li>
-      <li>IsSeller: bool </li>
-      <li>IsActivatedAccount: bool </li>
-      <li>IsActivatedSelling: bool </li>
-      <li>BoughtBooks: List</li>
-      <button
-        className='EditUserButton'
-        onClick={() => setopenEditProfile(true)}
-      >
-        Edit user
+      <h3>Welcome back, {user.name}!</h3>
+      <EditProfile
+          isEditing={isEditing}
+          setIsEditing={setIsEditing}
+        />
+      <p>Bought books: {user.boughtBooks.map(book => book.title)}</p>
+      
+      <button className='update-user-btn' onClick={() => setIsEditing(true)}>
+        Edit
       </button>
     </div>
   )

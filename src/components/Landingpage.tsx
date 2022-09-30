@@ -4,8 +4,8 @@ import checkboxState from "../atoms/checkboxState";
 import pureBooksState from "../atoms/pureBooksState";
 import searchInfoState from "../atoms/searchInfoState";
 import { BookModel } from "../Typescript/BookModel";
-import Bookpage from "./Bookpage";
-import Book from "./Book";
+import Bookpage from "./BookPage/Bookpage";
+import Book from "./BookPage/Book";
 import "./Landingpage.css";
 
 // displays three lines of latest published books: new, used, random
