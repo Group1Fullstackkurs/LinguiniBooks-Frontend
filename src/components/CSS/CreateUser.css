@@ -1,4 +1,4 @@
-.edit-container {
+.create-container {
     max-width: 600px;
     width: 10%;
     position: fixed;
@@ -12,7 +12,7 @@
     padding: 4em;
 }
 
-.edit-box > input {
+.create-box > input {
     height: 2em;
     margin-top: 1em;
 }
@@ -21,7 +21,3 @@
     text-align: center;
     margin-left: 1em;
 }
-
-
-
- 

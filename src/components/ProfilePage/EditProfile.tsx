@@ -1,5 +1,5 @@
 import "../CSS/EditProfile.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import userState from "../../atoms/userState";
 import React from "react";
@@ -14,7 +14,22 @@ const EditProfile = ({ isEditing, setIsEditing }: Props) => {
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newMail, setNewMail] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  useEffect(() => {
+    let putUser = {...user};
+    putUser.name = newUsername;
+    putUser.hash = newPassword;
+    putUser.mail = newMail;
+
+    fetch("https://linguinibooksapi20220913132810.azurewebsites.net/api/User/" + user.id + "/" + oldPassword, {
+      method: "PUT",
+      headers: {'content-type': 'application/json'},
+      body: JSON.stringify(putUser)
+    })
+  }, [isSubmitting]);
+  
   const handleUsername = (event: any) => {
     setNewUsername(event?.target.value);
   };
@@ -23,13 +38,28 @@ const EditProfile = ({ isEditing, setIsEditing }: Props) => {
     setNewMail(event?.target.value);
   };
 
-  const handlePassword = (event: any) => {
+  const handleNewPassword = (event: any) => {
     setNewPassword(event?.target.value);
+  };
+
+  const handleOldPassword = (event: any) => {
+    setOldPassword(event?.target.value);
+  };
+
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setUser({
+      ...user,
+      name: newUsername,
+      hash: newPassword,
+      mail: newMail,
+    });
   };
 
   if (isEditing) {
     return (
-      <div className="overlay">
         <div className="edit-container">
           <div className="edit-box">
             <label>
@@ -49,24 +79,33 @@ const EditProfile = ({ isEditing, setIsEditing }: Props) => {
               />
             </label>
             <label>
-              <p>Password</p>
+              <p>New Password</p>
               <input
                 type="text"
                 placeholder="********"
-                onChange={handlePassword}
+                onChange={handleNewPassword}
               />
             </label>
+            <label>
+              <p>Old Password</p>
+              <input
+                type="text"
+                placeholder="********"
+                onChange={handleOldPassword}
+              />
+            </label>
+            <input type='submit' value='Apply' onClick={handleSubmit} />
           </div>
-          <div className="content">
+          <div className="close-button">
             <button
               onClick={(event: React.MouseEvent<HTMLElement>) =>
                 setIsEditing(false)
-              }
-              className="close-button"
-            ></button>
+              } 
+            >
+              <p>x</p>
+              </button>
           </div>
         </div>
-      </div>
     );
   } else return null;
 };

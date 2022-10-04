@@ -14,6 +14,7 @@ import "./Header.css";
  // handles search input, (TODO: login), (TODO: cart)
 function Header() {
   const [checkboxIsDisabled, setCheckboxIsDisabled] = useState({az: false, author: false, year: false});
+  const [isSearchDisabled, setIsSearchDisabled] = useState(false);
   const [isChecked, setIsChecked] = useRecoilState(checkboxState);
   const [infoState, setInfoState] = useRecoilState(searchInfoState);
   const pureBooks = useRecoilValue(pureBooksState);
@@ -23,9 +24,12 @@ function Header() {
   useEffect(() => {
     if (infoState.category === "Category" || infoState.category === "") {
       setCheckboxIsDisabled({ az: true, author: true, year: true });
+      setIsSearchDisabled(false);
     } else {
       setCheckboxIsDisabled({ az: false, author: false, year: false });
+      setIsSearchDisabled(true);
     }
+      
   }, [infoState.category]);
 
   // filter books according to search input, category and checkbox
@@ -74,13 +78,14 @@ function Header() {
             </select>
             <input
               type="text"
-              placeholder="Search for a book title, e.g One Piece"
+              placeholder="Search for a book title, e.g One Piece(Real)"
               onChange={(event) =>
                 setInfoState({
                   searchKey: event.target.value,
                   category: infoState.category,
                 })
               }
+              disabled={isSearchDisabled}
             />
           </div>
           <div className="checkbox-container">

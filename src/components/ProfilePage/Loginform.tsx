@@ -3,12 +3,14 @@ import { useState, useEffect } from "react"
 import { useRecoilState } from "recoil"
 import userState from "../../atoms/userState"
 import fetchLoginUser from "../../Typescript/FetchLoginUser"
+import CreateUser from "./CreateUser"
 
 const Loginform = () => {
   const [userAtom, setUserAtom] = useRecoilState(userState)
   const [usernameInput, setUsernameInput] = useState("")
   const [passwordInput, setPasswordInput] = useState("")
   const [isLoggingIn, setIsLoggingIn] = useState(false)
+  const [isCreating, setIsCreating] = useState(false)
 
   const handleChangeUsername = (event: any) => {
     setUsernameInput(event.target.value)
@@ -19,6 +21,11 @@ const Loginform = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault() // to prevent submit to re-render the page as default
     setIsLoggingIn(true)
+  }
+
+  const handleClick = (event: any) => {
+    event.preventDefault()
+    setIsCreating(true)
   }
   
   useEffect(() => {
@@ -55,7 +62,12 @@ const Loginform = () => {
           value={passwordInput}
         />
       </label>
-      <input type='submit' value='Submit' placeholder="Sign in" onClick={handleSubmit} />
+      <input type='submit' value='Sign in' onClick={handleSubmit} />
+      <button onClick={handleClick}
+      >
+        <p>Create account</p>
+      </button>
+      <CreateUser isCreating={isCreating} setIsCreating={setIsCreating} />
     </form>
   )
 }

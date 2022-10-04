@@ -1,11 +1,8 @@
 .profile-page {
-    font-size: large;
-    background-color: black;
     z-index: -1;
 }
 
 .profile-card {
-    /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     padding: 1.5em;
@@ -16,16 +13,14 @@
 
 }
 
-/* On mouse-over, add a deeper shadow */
 .profile-card:hover {
     box-shadow: 0 5px 20px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Add some padding inside the card container */
 .container {
-    padding: 10em;
     background-color: white;
-    margin: 5em;
+    margin: 0 5em;
+    padding: 10em;
 }
 
 
