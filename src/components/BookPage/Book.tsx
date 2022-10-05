@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import cartState  from "../../atoms/cartState";
 import { BookModel } from "../../Typescript/BookModel";
-import "../CSS/Book.css";
+import CartModel from "../../Typescript/CartModel";
+import "./Book.css";
 
 // how each book will be displayed
 function Book(book: BookModel) {
   const [isShowInfo, setIsShowInfo] = useState(false);
+  const [cart, setCart] = useRecoilState(cartState);
  
   const ShowInfo = () =>{
     return isShowInfo ? (
@@ -23,6 +27,30 @@ function Book(book: BookModel) {
     setIsShowInfo(!isShowInfo);
   }
 
+  const handleAddCart = (book: BookModel) => {
+    let isFound: boolean = false;
+    let index: number = -1;
+    
+    cart.forEach((item) => {
+      index++;
+      if (item.book.id === book.id) {
+        let newCart: Array<CartModel> = Object.assign({}, cart);
+        newCart[index].quantity++;
+        console.log("Hello!", newCart[index].quantity);
+        setCart(newCart);
+        isFound = true;
+        return;
+      }
+    });
+    if(!isFound) {
+      let newBook: CartModel = new CartModel(book, 0);
+      setCart([...cart, newBook]);
+    }
+    
+    
+    console.log("Cart: ", cart);
+
+  }
 
   return (
     <div className="book-container">
@@ -38,15 +66,11 @@ function Book(book: BookModel) {
       </div>
       <div className="book-sale-info">
         <p>{book.price} ({book.publicationYear})</p>
-        {/* <a href="" target="_blank"> */}
           <div className="book-cart-btn"
-            onClick={(event: React.MouseEvent<HTMLElement>) => {
-              alert("Add to cart simulation")
-              }}
+            onClick={(event: React.MouseEvent<HTMLElement>) => handleAddCart(book)}
               >
             Add to cart
           </div>
-        {/* </a> */}
       </div>
       
         
