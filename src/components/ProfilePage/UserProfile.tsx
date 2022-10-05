@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useRecoilValue } from "recoil"
 import userState from "../../atoms/userState"
 import EditProfile from "./EditProfile"
-import "../CSS/Profile.css"
+import "./UserProfile.css"
 
 const Profile = () => {
   const user = useRecoilValue(userState)

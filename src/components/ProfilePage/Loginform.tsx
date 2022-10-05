@@ -1,4 +1,4 @@
-import "../CSS/Loginform.css"
+import "./Loginform.css"
 import { useState, useEffect } from "react"
 import { useRecoilState } from "recoil"
 import userState from "../../atoms/userState"

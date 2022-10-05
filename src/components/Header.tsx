@@ -11,7 +11,7 @@ import { FilterType } from "../Typescript/EnumFilterType";
 import filter from "../Typescript/Filter";
 import "./Header.css";
 
- // handles search input, (TODO: login), (TODO: cart)
+ // handles search input, (TODO: cart)
 function Header() {
   const [checkboxIsDisabled, setCheckboxIsDisabled] = useState({az: false, author: false, year: false});
   const [isSearchDisabled, setIsSearchDisabled] = useState(false);
@@ -143,7 +143,7 @@ function Header() {
             <p>Sign in</p>
           </div>
         </Link>
-        <Link to="/">
+        <Link to="/Cartpage">
           <div className="cart-box">
             <FontAwesomeIcon icon={faCartShopping} />
             <p>Cart</p>

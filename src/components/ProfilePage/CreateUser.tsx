@@ -1,4 +1,4 @@
-import "../CSS/CreateUser.css";
+import "./CreateUser.css";
 import { useState, useEffect } from "react";
 
 type Props = {

@@ -2,7 +2,7 @@ import { useRecoilValue } from "recoil";
 import filteredBooksState from "../../atoms/filteredBooksState";
 import searchInfoState from "../../atoms/searchInfoState";
 import Book from "./Book";
-import "../CSS/Bookpage.css";
+import "./Bookpage.css";
 
 // displays the books that are filtered by the searchbar
 function Bookpage() {

@@ -2,6 +2,7 @@
 import "./App.css"
 import Header from "./components/Header"
 import Bookpage from "./components/BookPage/Bookpage"
+import Cartpage from "./components/Cartpage"
 import Landingpage from "./components/Landingpage"
 import { useRecoilValue, useRecoilState } from "recoil"
 import searchInfoState from "./atoms/searchInfoState"
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Landingpage />} />
           <Route path='/ProfilePage' element={<Profilepage />} />
+          <Route path='/CartPage' element={<Cartpage />} />
           <Route path='/*' element={<Landingpage />} />
         </Routes>
       </div>

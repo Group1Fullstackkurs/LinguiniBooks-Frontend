@@ -1,4 +1,4 @@
-import "../CSS/EditProfile.css";
+import "./EditProfile.css";
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import userState from "../../atoms/userState";
@@ -68,6 +68,8 @@ const EditProfile = ({ isEditing, setIsEditing }: Props) => {
                 type="text"
                 placeholder={user.name}
                 onChange={handleUsername}
+                maxLength={8}
+                required
               />
             </label>
             <label>
@@ -76,6 +78,7 @@ const EditProfile = ({ isEditing, setIsEditing }: Props) => {
                 type="text"
                 placeholder={user.mail}
                 onChange={handleEmail}
+                required
               />
             </label>
             <label>
@@ -84,6 +87,8 @@ const EditProfile = ({ isEditing, setIsEditing }: Props) => {
                 type="text"
                 placeholder="********"
                 onChange={handleNewPassword}
+                maxLength={8}
+                required
               />
             </label>
             <label>
@@ -92,6 +97,8 @@ const EditProfile = ({ isEditing, setIsEditing }: Props) => {
                 type="text"
                 placeholder="********"
                 onChange={handleOldPassword}
+                maxLength={8}
+                required
               />
             </label>
             <input type='submit' value='Apply' onClick={handleSubmit} />

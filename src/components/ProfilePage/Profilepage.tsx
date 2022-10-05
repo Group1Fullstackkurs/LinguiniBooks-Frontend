@@ -2,8 +2,8 @@ import { useEffect } from "react"
 import { useRecoilValue } from "recoil"
 import userState from "../../atoms/userState"
 import Loginform from "./Loginform"
-import Profile from "./Profile"
-import "../CSS/Profilepage.css"
+import UserProfile from "./UserProfile"
+import "./Profilepage.css"
 
 function Profilepage() {
   const user = useRecoilValue(userState)
@@ -15,7 +15,7 @@ function Profilepage() {
         <div className='container'>
           <div className='profile-page'>
             <div className='profile-card'>
-              <Profile />
+              <UserProfile />
             </div>
           </div>
         </div>
