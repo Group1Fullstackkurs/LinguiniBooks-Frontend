@@ -6,6 +6,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
+    justify-content: center;
     background-color: #fff;
     box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.75);
     border-radius: 8px;
@@ -19,7 +20,7 @@
 
 .close-button {
     text-align: center;
-    margin-left: 1em;
+    margin-left: 14em;
 }
 
 

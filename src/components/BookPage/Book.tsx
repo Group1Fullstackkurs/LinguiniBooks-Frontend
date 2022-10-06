@@ -19,6 +19,7 @@ function Book(book: BookModel) {
         <p>Category: {book.category}</p>
         <p>Condition: {book.new ? "New" : "Used"}</p>
         <p>Seller: {book.seller}</p>
+        <p>Quantity: {book.stock}</p>
       </div>
     ) : null; 
   }
@@ -27,16 +28,32 @@ function Book(book: BookModel) {
     setIsShowInfo(!isShowInfo);
   }
 
+  const addCartBtn = (book: BookModel) => { 
+    if(book.stock > 0) {
+      return (
+        <div className="book-cart-btn"
+        onClick={(event: React.MouseEvent<HTMLElement>) => handleAddCart(book)}
+          >
+        Add to cart
+      </div>
+      )
+    }
+    return(
+      <div className="book-cart-btn" style={{background:'#bcbcbc'}}>
+        Out of stock
+        </div>
+    )
+  }
+
   const handleAddCart = (book: BookModel) => {
     let isFound: boolean = false;
-    let index: number = -1;
-    
-    cart.forEach((item) => {
-      index++;
+
+    cart.map((item, i) => {
       if (item.book.id === book.id) {
-        let newCart: Array<CartModel> = Object.assign({}, cart);
-        newCart[index].quantity++;
-        console.log("Hello!", newCart[index].quantity);
+        let newCart: Array<CartModel> = JSON.parse(JSON.stringify(cart))
+        if(book.stock > newCart[i].quantity){
+          newCart[i].quantity++;
+        }
         setCart(newCart);
         isFound = true;
         return;
@@ -66,14 +83,8 @@ function Book(book: BookModel) {
       </div>
       <div className="book-sale-info">
         <p>{book.price} ({book.publicationYear})</p>
-          <div className="book-cart-btn"
-            onClick={(event: React.MouseEvent<HTMLElement>) => handleAddCart(book)}
-              >
-            Add to cart
-          </div>
+          {addCartBtn(book)}
       </div>
-      
-        
     </div>
   );
 }

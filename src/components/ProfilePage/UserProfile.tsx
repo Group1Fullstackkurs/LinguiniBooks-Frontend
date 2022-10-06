@@ -19,7 +19,7 @@ const Profile = () => {
       <p>Bought books: {user.boughtBooks.map(book => book.title)}</p>
       <p>{user.id}</p>
       
-      <button className='update-user-btn' onClick={() => setIsEditing(true)}>
+      <button onClick={() => setIsEditing(true)}>
         <p>Edit</p>
       </button>
     </div>

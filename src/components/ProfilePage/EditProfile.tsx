@@ -1,6 +1,6 @@
 import "./EditProfile.css";
 import { useState, useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import userState from "../../atoms/userState";
 import React from "react";
 
@@ -10,12 +10,12 @@ type Props = {
 };
 
 const EditProfile = ({ isEditing, setIsEditing }: Props) => {
-  const [user, setUser] = useRecoilState(userState);
+  const user = useRecoilValue(userState);
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newMail, setNewMail] = useState("");
-  const [oldPassword, setOldPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [oldPassword, setOldPassword] = useState("");
 
   useEffect(() => {
     let putUser = {...user};
@@ -23,11 +23,18 @@ const EditProfile = ({ isEditing, setIsEditing }: Props) => {
     putUser.hash = newPassword;
     putUser.mail = newMail;
 
-    fetch("https://linguinibooksapi20220913132810.azurewebsites.net/api/User/" + user.id + "/" + oldPassword, {
-      method: "PUT",
-      headers: {'content-type': 'application/json'},
-      body: JSON.stringify(putUser)
-    })
+    const updateUser = async () =>{
+     await fetch("https://linguinibooksapi20220913132810.azurewebsites.net/api/User/" + user.id + "/" + oldPassword, {
+        method: "PUT",
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(putUser)
+      })
+    }
+    if(isSubmitting){
+      updateUser();
+      setIsSubmitting(false);
+    }
+    
   }, [isSubmitting]);
   
   const handleUsername = (event: any) => {
@@ -46,22 +53,25 @@ const EditProfile = ({ isEditing, setIsEditing }: Props) => {
     setOldPassword(event?.target.value);
   };
 
-
   const handleSubmit = (event: any) => {
-    event.preventDefault();
-    setIsSubmitting(true);
-    setUser({
-      ...user,
-      name: newUsername,
-      hash: newPassword,
-      mail: newMail,
-    });
+    if(oldPassword === user.hash){
+      setIsSubmitting(true);
+    }else alert("Wrong password");    
   };
 
   if (isEditing) {
     return (
         <div className="edit-container">
           <div className="edit-box">
+          <div className="close-button">
+            <button
+              onClick={(event: React.MouseEvent<HTMLElement>) =>
+                setIsEditing(false)
+              } 
+            >
+              <p>x</p>
+              </button>
+          </div>
             <label>
               <p>Username</p>
               <input
@@ -103,15 +113,7 @@ const EditProfile = ({ isEditing, setIsEditing }: Props) => {
             </label>
             <input type='submit' value='Apply' onClick={handleSubmit} />
           </div>
-          <div className="close-button">
-            <button
-              onClick={(event: React.MouseEvent<HTMLElement>) =>
-                setIsEditing(false)
-              } 
-            >
-              <p>x</p>
-              </button>
-          </div>
+          
         </div>
     );
   } else return null;
