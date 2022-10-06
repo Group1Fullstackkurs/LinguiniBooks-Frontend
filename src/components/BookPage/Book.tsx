@@ -60,7 +60,7 @@ function Book(book: BookModel) {
       }
     });
     if(!isFound) {
-      let newBook: CartModel = new CartModel(book, 0);
+      let newBook: CartModel = new CartModel(book, 1);
       setCart([...cart, newBook]);
     }
     

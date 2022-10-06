@@ -3,7 +3,6 @@ import { useRecoilState } from "recoil"
 import cartState from "../atoms/cartState"
 import { Link } from "react-router-dom";
 import CartModel from "../Typescript/CartModel"
-import Book from "./BookPage/Book";
 
 const Cartpage = () => {
 	const [cart, setCart] = useRecoilState(cartState)
@@ -38,7 +37,8 @@ const Cartpage = () => {
 	for (let i = 0; i < cart.length; i++) {
 		let bookPrice = cart[i].book.price.substring(1).replace(",", ".");
 		let booksPrice = parseFloat(bookPrice) * cart[i].quantity;	
-		total += booksPrice;
+		total += booksPrice; 
+		total = +total.toFixed(2); // + is used to convert string to number
 	}
 
 	return (
