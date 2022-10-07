@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
-import filteredBooksState from "../atoms/filteredBooksState";
-import searchInfoState from "../atoms/searchInfoState";
+import filteredBooksState from "../../atoms/filteredBooksState";
+import searchInfoState from "../../atoms/searchInfoState";
 import Book from "./Book";
 import "./Bookpage.css";
 

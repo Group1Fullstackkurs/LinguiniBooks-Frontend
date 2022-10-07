@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { BookModel } from "../Typescript/BookModel";
+import { useRecoilState } from "recoil";
+import cartState  from "../../atoms/cartState";
+import BookModel from "../../Typescript/BookModel";
+import CartModel from "../../Typescript/CartModel";
 import "./Book.css";
 
 // how each book will be displayed
 function Book(book: BookModel) {
   const [isShowInfo, setIsShowInfo] = useState(false);
+  const [cart, setCart] = useRecoilState(cartState);
  
   const ShowInfo = () =>{
     return isShowInfo ? (
@@ -15,6 +19,7 @@ function Book(book: BookModel) {
         <p>Category: {book.category}</p>
         <p>Condition: {book.new ? "New" : "Used"}</p>
         <p>Seller: {book.seller}</p>
+        <p>Quantity: {book.stock}</p>
       </div>
     ) : null; 
   }
@@ -23,6 +28,42 @@ function Book(book: BookModel) {
     setIsShowInfo(!isShowInfo);
   }
 
+  const addCartBtn = (book: BookModel) => { 
+    if(book.stock > 0) {
+      return (
+        <div className="book-cart-btn"
+        onClick={(event: React.MouseEvent<HTMLElement>) => handleAddCart(book)}
+          >
+        Add to cart
+      </div>
+      )
+    }
+    return(
+      <div className="book-cart-btn" style={{background:'#bcbcbc'}}>
+        Out of stock
+        </div>
+    )
+  }
+
+  const handleAddCart = (book: BookModel) => {
+    let isFound: boolean = false;
+
+    cart.map((item, i) => {
+      if (item.book.id === book.id) {
+        let newCart: Array<CartModel> = JSON.parse(JSON.stringify(cart))
+        if(book.stock > newCart[i].quantity){
+          newCart[i].quantity++;
+        }
+        setCart(newCart);
+        isFound = true;
+        return;
+      }
+    });
+    if(!isFound) {
+      let newBook: CartModel = new CartModel(book, 1);
+      setCart([...cart, newBook]);
+    }
+  }
 
   return (
     <div className="book-container">
@@ -38,18 +79,8 @@ function Book(book: BookModel) {
       </div>
       <div className="book-sale-info">
         <p>{book.price} ({book.publicationYear})</p>
-        {/* <a href="" target="_blank"> */}
-          <div className="book-cart-btn"
-            onClick={(event: React.MouseEvent<HTMLElement>) => {
-              alert("Add to cart simulation")
-              }}
-              >
-            Add to cart
-          </div>
-        {/* </a> */}
+          {addCartBtn(book)}
       </div>
-      
-        
     </div>
   );
 }

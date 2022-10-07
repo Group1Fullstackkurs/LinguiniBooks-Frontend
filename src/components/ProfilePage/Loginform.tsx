@@ -1,45 +1,54 @@
-import "./Profilepage.css"
+import "./Loginform.css"
 import { useState, useEffect } from "react"
 import { useRecoilState } from "recoil"
 import userState from "../../atoms/userState"
+import pwdState from "../../atoms/pwdState"
 import fetchLoginUser from "../../Typescript/FetchLoginUser"
-import isLoggedInState from "../../atoms/isLoggedInState"
+import CreateUser from "./CreateUser"
 
 const Loginform = () => {
   const [userAtom, setUserAtom] = useRecoilState(userState)
+  const [userPwd, setUserPwd] = useRecoilState(pwdState)
   const [usernameInput, setUsernameInput] = useState("")
   const [passwordInput, setPasswordInput] = useState("")
-  const [isLoggedIn, setIsLoggedIn] = useRecoilState(isLoggedInState)
   const [isLoggingIn, setIsLoggingIn] = useState(false)
+  const [isCreating, setIsCreating] = useState(false)
 
-  const handleChangeUsername = event => {
+  const handleChangeUsername = (event: any) => {
     setUsernameInput(event.target.value)
   }
-  const handleChangePassword = event => {
+  const handleChangePassword = (event: any) => {
     setPasswordInput(event.target.value)
   }
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault() // to prevent submit to re-render the page as default
     setIsLoggingIn(true)
   }
+
+  const handleClick = (event: any) => {
+    event.preventDefault()
+    setIsCreating(true)
+  }
   
   useEffect(() => {
-    
     const getUser = async () => {
-      await fetchLoginUser(usernameInput, passwordInput).then(user => console.log("Fetching user: ", user))
-      await fetchLoginUser(usernameInput, passwordInput).then(user => setUserAtom(user))
+      await fetchLoginUser(usernameInput, passwordInput).then(user =>
+        setUserAtom(user)
+      )
     }
-    if(isLoggingIn){
+    
+    if (isLoggingIn) {
       getUser()
+      setUserPwd(passwordInput)
     }
-    userAtom.id === null ? setIsLoggedIn(false) : setIsLoggedIn(true)
-
+    
   }, [isLoggingIn])
 
   return (
-    <form>
+    <form className="form-container">
+      <h2>Sign in below</h2>
       <label>
-        Username:
+        <p>Username:</p> 
         <input
           type='text'
           id='username'
@@ -47,7 +56,7 @@ const Loginform = () => {
           onChange={handleChangeUsername}
           value={usernameInput}
         />
-        Password:
+        <p>Password:</p>
         <input
           type='text'
           id='password'
@@ -56,10 +65,12 @@ const Loginform = () => {
           value={passwordInput}
         />
       </label>
-
-      <input type='submit' value='Submit' onClick={handleSubmit} />
-      <p>user: {userAtom.name}</p>
-      {userAtom.id}
+      <input type='submit' value='Sign in' onClick={handleSubmit} />
+      <button onClick={handleClick}
+      >
+        <p>Create account</p>
+      </button>
+      <CreateUser isCreating={isCreating} setIsCreating={setIsCreating} />
     </form>
   )
 }

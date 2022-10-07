@@ -1,0 +1,33 @@
+.cart-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.cart-itembox{
+	width: 50vw;
+	max-height: 60vh;
+	overflow-y: scroll;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.cart-item{
+	display: flex;
+	width: 40vw;
+	height: 100%;
+	border: 1px solid black;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.item-btns{
+	display: flex;
+	gap: 1em;
+}
+
+.cart-btns{
+	display: flex;
+	gap: 1em;
+}

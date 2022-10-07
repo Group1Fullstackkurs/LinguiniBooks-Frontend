@@ -1,33 +1,37 @@
-import "./Profilepage.css"
-import { useState, useEffect } from "react"
-import EditProfile from "./EditProfile"
+import { useEffect } from "react"
 import { useRecoilValue } from "recoil"
 import userState from "../../atoms/userState"
-import fetchLoginUser from "../../Typescript/FetchLoginUser"
 import Loginform from "./Loginform"
-import isLoggedInState from "../../atoms/isLoggedInState"
+import UserProfile from "./UserProfile"
+import "./Profilepage.css"
 
 function Profilepage() {
-  const isLoggedIn = useRecoilValue(isLoggedInState)
-  return (
-    <section>
-      <div className='container'>
-        <div className='ProfilePage'>
-          <h3>
-            This is a nice profile page, good design. Don't ever, and I mean
-            EVER touch it, Julia.
-          </h3>
-          <div className='ProfileCard'>
-            <Loginform />
-            {/* // {isLoggedIn?} */}
+  const user = useRecoilValue(userState)
+
+  if (user.id != undefined)
+    return (
+      
+      <section>
+        <div className='container'>
+          <div className='profile-page'>
+            <div className='profile-card'>
+              <UserProfile />
+            </div>
           </div>
         </div>
-        {/* <EditProfile
-          open={openEditProfile}
-          onClose={() => setopenEditProfile(false)}
-        /> */}
-      </div>
-    </section>
-  )
+      </section>
+    )
+  else
+    return (
+      <section>
+        <div className='container'>
+          <div className='profile-page'>
+            <div className='profile-card'>
+              <Loginform />
+            </div>
+          </div>
+        </div>
+      </section>
+    )
 }
 export default Profilepage

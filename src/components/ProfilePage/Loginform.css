@@ -1,0 +1,15 @@
+.form-container p{
+	margin:0;
+}
+
+.form-container input{
+	display: block;
+}
+
+.form-container input[type="submit"]{
+	margin: 1em 0;
+}
+
+.form-container input[type="submit"]:hover{
+	cursor: pointer;
+}

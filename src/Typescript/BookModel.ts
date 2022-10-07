@@ -1,4 +1,4 @@
-export class BookModel {
+class BookModel {
     id: string = ""
     firstName: string = ""
     lastName: string = ""
@@ -11,3 +11,5 @@ export class BookModel {
     stock: number = 0
     new: boolean = false
 }
+
+export default BookModel;
