@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import cartState  from "../../atoms/cartState";
-import { BookModel } from "../../Typescript/BookModel";
+import BookModel from "../../Typescript/BookModel";
 import CartModel from "../../Typescript/CartModel";
 import "./Book.css";
 
@@ -63,10 +63,6 @@ function Book(book: BookModel) {
       let newBook: CartModel = new CartModel(book, 1);
       setCart([...cart, newBook]);
     }
-    
-    
-    console.log("Cart: ", cart);
-
   }
 
   return (

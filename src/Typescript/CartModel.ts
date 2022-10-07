@@ -1,4 +1,4 @@
-import { BookModel } from "./BookModel";
+import  BookModel from "./BookModel";
 
 class CartModel {
     constructor(book: BookModel, quantity: number) {

@@ -2,11 +2,13 @@ import "./Loginform.css"
 import { useState, useEffect } from "react"
 import { useRecoilState } from "recoil"
 import userState from "../../atoms/userState"
+import pwdState from "../../atoms/pwdState"
 import fetchLoginUser from "../../Typescript/FetchLoginUser"
 import CreateUser from "./CreateUser"
 
 const Loginform = () => {
   const [userAtom, setUserAtom] = useRecoilState(userState)
+  const [userPwd, setUserPwd] = useRecoilState(pwdState)
   const [usernameInput, setUsernameInput] = useState("")
   const [passwordInput, setPasswordInput] = useState("")
   const [isLoggingIn, setIsLoggingIn] = useState(false)
@@ -37,6 +39,7 @@ const Loginform = () => {
     
     if (isLoggingIn) {
       getUser()
+      setUserPwd(passwordInput)
     }
     
   }, [isLoggingIn])

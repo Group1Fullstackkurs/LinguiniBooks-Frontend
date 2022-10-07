@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { plainToInstance } from 'class-transformer'
-import { BookModel } from './BookModel'
+import BookModel from './BookModel'
 
 const fetchAllBooks = async (): Promise<Array<BookModel>> => {
         let books!: Array<BookModel>

@@ -52,6 +52,15 @@ const CreateUser = ({ isCreating, setIsCreating }: Props) => {
   if (isCreating) {
     return (
         <div className="create-container">
+          <div className="close-button">
+            <button
+              onClick={(event: React.MouseEvent<HTMLElement>) =>
+                setIsCreating(false)
+              } 
+            >
+              <p>x</p>
+              </button>
+          </div>
           <div className="create-box">
             <label>
               <p>Username</p>
@@ -79,15 +88,7 @@ const CreateUser = ({ isCreating, setIsCreating }: Props) => {
             </label>
             <input type='submit' value='Create' onClick={handleSubmit} />
           </div>
-          <div className="close-button">
-            <button
-              onClick={(event: React.MouseEvent<HTMLElement>) =>
-                setIsCreating(false)
-              } 
-            >
-              <p>x</p>
-              </button>
-          </div>
+          
         </div>
     );
   } else return null;

@@ -3,7 +3,7 @@ import { useRecoilValue } from "recoil";
 import checkboxState from "../atoms/checkboxState";
 import pureBooksState from "../atoms/pureBooksState";
 import searchInfoState from "../atoms/searchInfoState";
-import { BookModel } from "../Typescript/BookModel";
+import BookModel from "../Typescript/BookModel";
 import Bookpage from "./BookPage/Bookpage";
 import Book from "./BookPage/Book";
 import "./Landingpage.css";
@@ -37,7 +37,7 @@ function Landingpage() {
             </div>
           );
         })
-        .slice(0, 7)}
+        .slice(0, 6)}
     </div>
     <h2>Latest books in used condition</h2>
     <div className="bookbox">
@@ -55,7 +55,7 @@ function Landingpage() {
             </div>
           );
         })
-        .slice(0, 7)}
+        .slice(0, 6)}
     </div>
     <h2>New and used books</h2>
     <div className="bookbox">
@@ -68,7 +68,7 @@ function Landingpage() {
             </div>
           );
         })
-        .slice(0, 7)}
+        .slice(0, 6)}
     </div>
   </div>)
   }

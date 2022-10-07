@@ -1,0 +1,9 @@
+.bought-books{
+	display: flex;
+	flex-direction: column;
+}
+
+.userprofile-container button{
+	margin-right: 0.5em;
+	text-align: center;
+}

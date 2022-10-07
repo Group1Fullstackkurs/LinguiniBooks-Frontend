@@ -1,6 +1,6 @@
 import "./EditProfile.css";
 import { useState, useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import userState from "../../atoms/userState";
 import React from "react";
 
@@ -63,15 +63,19 @@ const EditProfile = ({ isEditing, setIsEditing }: Props) => {
     return (
         <div className="edit-container">
           <div className="edit-box">
-          <div className="close-button">
-            <button
-              onClick={(event: React.MouseEvent<HTMLElement>) =>
-                setIsEditing(false)
-              } 
-            >
-              <p>x</p>
-              </button>
-          </div>
+            <div className="edit-header">
+                <h2>Edit profile</h2>
+              <div className="close-button">
+                <button
+                  onClick={(event: React.MouseEvent<HTMLElement>) =>
+                    setIsEditing(false)
+                  } 
+                >
+                  <p>x</p>
+                  </button>
+              </div>
+            </div>
+          
             <label>
               <p>Username</p>
               <input

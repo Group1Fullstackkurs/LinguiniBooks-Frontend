@@ -1,6 +1,4 @@
 .edit-container {
-    max-width: 600px;
-    width: 10%;
     position: fixed;
     top: 40%;
     left: 50%;
@@ -8,7 +6,7 @@
     display: flex;
     justify-content: center;
     background-color: #fff;
-    box-shadow: 0px 0px 18px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 8px 5px #7d7d7dbf;
     border-radius: 8px;
     padding: 4em;
 }
@@ -16,12 +14,19 @@
 .edit-box > input {
     height: 2em;
     margin-top: 1em;
+    display: block;
 }
 
 .close-button {
     text-align: center;
-    margin-left: 14em;
 }
+
+.edit-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 
 
 
