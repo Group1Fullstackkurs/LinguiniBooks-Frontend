@@ -20,7 +20,7 @@ const CreateUser = ({ isCreating, setIsCreating }: Props) => {
 	};
 
     const createUser = async () => {
-      await fetch("https://linguinibooksapi20220913132810.azurewebsites.net/api/User/", {
+      await fetch("https://linguinibooksapi20221010110139.azurewebsites.net/api/User/", {
         method: "POST",
         headers: {'content-type': 'application/json'},
         body: JSON.stringify(postUser)

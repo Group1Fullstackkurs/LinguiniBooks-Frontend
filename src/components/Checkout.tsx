@@ -26,7 +26,7 @@ const Checkout = ({isCheckout, setIsCheckout}: Props) =>{
 			bookList = bookList.concat(item.book)
 		})
 		const updateBooks = async () => {
-			await fetch("https://linguinibooksapi20220913132810.azurewebsites.net/api/User/BuyBook/" + user.id + "/" + pwd, {
+			await fetch("https://linguinibooksapi20221010110139.azurewebsites.net/api/User/BuyBook/" + user.id + "/" + pwd, {
 				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",

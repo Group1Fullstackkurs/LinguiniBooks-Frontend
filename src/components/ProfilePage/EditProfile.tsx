@@ -24,7 +24,7 @@ const EditProfile = ({ isEditing, setIsEditing }: Props) => {
     putUser.mail = newMail;
 
     const updateUser = async () =>{
-     await fetch("https://linguinibooksapi20220913132810.azurewebsites.net/api/User/" + user.id + "/" + oldPassword, {
+     await fetch("https://linguinibooksapi20221010110139.azurewebsites.net/api/User/" + user.id + "/" + oldPassword, {
         method: "PUT",
         headers: {'content-type': 'application/json'},
         body: JSON.stringify(putUser)
