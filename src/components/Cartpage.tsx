@@ -5,7 +5,7 @@ import cartState from "../atoms/cartState"
 import userState from "../atoms/userState"
 import { Link } from "react-router-dom";
 import CartModel from "../Typescript/CartModel"
-import totalCost from "../Typescript/Totalcost";
+import totalCost from "../Typescript/totalCost";
 import Book from "./BookPage/Book";
 import Checkout from "./Checkout"
 
