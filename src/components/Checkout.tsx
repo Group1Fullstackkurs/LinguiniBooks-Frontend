@@ -3,7 +3,7 @@ import { useRecoilValue } from "recoil";
 import cartState from "../atoms/cartState";
 import pwdState from "../atoms/pwdState";
 import userState from "../atoms/userState";
-import totalCost from "../Typescript/Totalcost";
+import totalCost from "../Typescript/totalCost";
 import "./Checkout.css"
 import { useEffect } from "react";
 import BookModel from "../Typescript/BookModel";
