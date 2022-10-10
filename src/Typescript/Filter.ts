@@ -1,6 +1,6 @@
 import { FilterType } from "./EnumFilterType";
 import { SetterOrUpdater } from "recoil";
-import { BookModel } from "./BookModel";
+import BookModel from "./BookModel";
 import IInfoState from "./IInfoState";
 
 const filter = async (
