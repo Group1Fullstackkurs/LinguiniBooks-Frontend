@@ -29,6 +29,7 @@ const CreateUser = ({ isCreating, setIsCreating }: Props) => {
     if (isSubmitting) {
       createUser();
       setIsSubmitting(false);
+      setIsCreating(false)
     }
   }, [isSubmitting])
   
