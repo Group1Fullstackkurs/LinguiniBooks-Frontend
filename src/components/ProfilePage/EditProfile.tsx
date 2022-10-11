@@ -1,8 +1,12 @@
 import "./EditProfile.css";
 import { useState, useEffect } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import userState from "../../atoms/userState";
+import cartState from "../../atoms/cartState"
+import pwdState from "../../atoms/pwdState"
 import React from "react";
+import { UserModel } from "../../Typescript/UserModel"
+import CartModel from "../../Typescript/CartModel"
 
 type Props = {
   isEditing: boolean;
@@ -10,12 +14,20 @@ type Props = {
 };
 
 const EditProfile = ({ isEditing, setIsEditing }: Props) => {
-  const user = useRecoilValue(userState);
+  const [user, setUser] = useRecoilState(userState)
+  const [cart, setCart] = useRecoilState(cartState)
+  const [pwd, setPwd] = useRecoilState(pwdState)
   const [newUsername, setNewUsername] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [newMail, setNewMail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [oldPassword, setOldPassword] = useState("");
+
+  const handleApply = () =>{
+    setUser({} as UserModel)
+    setCart([] as CartModel[])
+    setPwd("")
+  }
 
   useEffect(() => {
     let putUser = {...user};
@@ -32,6 +44,7 @@ const EditProfile = ({ isEditing, setIsEditing }: Props) => {
     }
     if(isSubmitting){
       updateUser();
+      handleApply();
       setIsSubmitting(false);
     }
     

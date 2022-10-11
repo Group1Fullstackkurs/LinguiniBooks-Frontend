@@ -14,3 +14,5 @@ export class UserModel {
   isActivatedSelling: boolean = true;
   boughtBooks: Array<IBookModel> = [];
 }
+
+export default UserModel;
